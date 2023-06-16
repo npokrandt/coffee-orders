@@ -1,15 +1,11 @@
-console.log("hello coffee")
 
-//types: 
-//latte
-//cappucino
-//mocha
-//espresso
-//americano
+var btn = document.querySelector("button")
 
-//levels of creamer:
-//black
-//less black
-//regular
-//bit extra
-//koolaid
+// main code
+function startGame(){
+    document.body.style.backgroundColor = "lightgreen"
+}
+
+btn.addEventListener("click", function() {
+    startGame()
+})
