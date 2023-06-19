@@ -40,6 +40,21 @@ button {
     justify-content: space-around;
 }
 
+.coffee-card {
+    margin: 10px;
+    width: 275px;
+    height: 275px;
+    background-color: white;
+    border: 2px solid black;
+}
+
+.not-inline {
+    display: block;
+}
+
+.coffee-card input{
+    width: 15px;
+}
 /* id selectors */
 
 #coffee-how-to{
