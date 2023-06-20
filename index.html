@@ -12,43 +12,60 @@
     <h1>Coffee Orders</h1>
 
     <section id="coffee-how-to">
-        <div id="coffee-types" class="coffee-holder">
-            <h4>Coffee Types:</h4>
-            <p>latte: +2</p>
-            <p>cappuccino: +1</p>
-            <p>mocha: +2</p>
-            <p>espresso: +4</p>
-            <p>americano: +0</p>
-        </div>
-        <div id="creamer-amounts" class="coffee-holder">
-            <h4>Creamer Amounts:</h4>
-            <p>black: always 0</p>
-            <p>little: no change</p>
-            <p>normal: +1</p>
-            <p>a bit extra: +2</p>
-            <p>koolaid: +5</p>
-        </div>
-        <div id="sizes" class="coffee-holder">
-            <h4>Sizes:</h4>
-            <p>small: half (rounded up)</p>
-            <p>regular: no change</p>
-            <p>large: double</p>
-            <p>extra large: triple</p>
-        </div>
+        <h2># creamers to add per category:</h2>
+        <table>
+            <tr>
+                <th>Coffee Types:</th>
+                <th>Creamer Amounts:</th>
+                <th>Sizes:</th>
+            </tr>
+            <tr>
+                <td>latte: +2</td>
+                <td>black: always 0</td>
+                <td>small: half (rounded up)</td>
+            </tr>
+            <tr>
+                <td>cappuccino: +1</td>
+                <td>little: no change</td>
+                <td>regular: no change</td>
+            </tr>
+            <tr>
+                <td>mocha: +2</td>
+                <td>normal: +1</td>
+                <td>large: double</td>
+            </tr>
+            <tr>
+                <td>espresso: +4</td>
+                <td>a bit extra: +2</td>
+                <td>extra large: triple</td>
+            </tr>
+            <tr>
+                <td>americano: +0</td>
+                <td>koolaid: +5</td>
+                <td></td>
+            </tr>
+        </table>
+
     </section>
 
     <div id="coffee-area">
-        <form class="coffee-card">
+        <!-- <form class="coffee-card">
             <h4>Order Card</h4>
             <label class="not-inline">Coffee Type: <span>Stormy Stan</span></label>
             <label class="not-inline">Creamer Amount: <span>koolaid</span></label>
             <label class="not-inline">Size: <span>large</span></label>
-            <label>How Many Creamers?</label><input type="text">
-            <button>Submit Order</button>
-        </form>
+            <div>
+                <label>How Many Creamers?</label>
+                <input type="text">
+            </div>
+            <button type="button">Submit Order</button>
+        </form> -->
 
+        <!-- <p>Incorrect Number! Try again</p> -->
+        
     </div>
-    <button type="button">Start orders!</button>
+
+    <button type="button" id="start-orders">Start orders!</button>
     <script src="assets/js/script.js"></script>
 </body>
 </html>
