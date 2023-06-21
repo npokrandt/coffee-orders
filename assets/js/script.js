@@ -2,13 +2,21 @@
 var startOrdersBtn = document.getElementById("start-orders")
 
 var coffeeOrders = []
+var coffeeTypes = ["latte", "cappuccino", "mocha", "espresso", "americano"]
+var creamerAmounts = ["black", "little", "normal", "a bit extra", "koolaid"]
+var sizes = ["small", "regular", "large", "extra large"]
 // 2 stages:
 // build order card
 // check the users answer to the real one
 // main code
+
+//refactor at some point
 function startGame(){
     var id = "coffee" + coffeeOrders.length
-    document.body.style.backgroundColor = "lightgreen"
+    var coffeeType = coffeeTypes[Math.floor(Math.random() * 5)]
+    var creamerAmount = creamerAmounts[Math.floor(Math.random() * 5)]
+    var size = sizes[Math.floor(Math.random() * 4)]
+    //document.body.style.backgroundColor = "lightgreen"
     var parent = document.getElementById("coffee-area")
     console.log(parent)
     var coffeeCard = document.createElement("form")
@@ -30,19 +38,19 @@ function startGame(){
 
     var coffeeLabel1 = document.createElement("label")
     coffeeLabel1.class = "not-inline"
-    coffeeLabel1.innerHTML = "Coffee Type: <span>Test</span>"
+    coffeeLabel1.innerHTML = "Coffee Type: " + coffeeType
     console.log(coffeeLabel1)
     parent.appendChild(coffeeLabel1)
     
     var coffeeLabel2 = document.createElement("label")
     coffeeLabel2.class = "not-inline"
-    coffeeLabel2.innerHTML = "Creamer Amount: <span>Test</span>"
+    coffeeLabel2.innerHTML = "Creamer Amount: " + creamerAmount
     console.log(coffeeLabel2)
     parent.appendChild(coffeeLabel2)
     
     var coffeeLabel3 = document.createElement("label")
     coffeeLabel3.class = "not-inline"
-    coffeeLabel3.innerHTML = "Coffee Type: <span>Test</span>"
+    coffeeLabel3.innerHTML = "Size: " + size
     console.log(coffeeLabel3)
     parent.appendChild(coffeeLabel3)
 
@@ -69,7 +77,28 @@ function startGame(){
     console.log(coffeeInput)
     parent.appendChild(coffeeInput)
 
+    var answer = calculateCreamers(coffeeType, creamerAmount, size)
+    console.log(answer)
+}
 
+function calculateCreamers(type, amount, size) {
+    
+    if (amount === "black"){
+        return 0
+    } else {
+        var typeNum = JSON.parse(localStorage.getItem(type))
+        var amountNum = JSON.parse(localStorage.getItem(amount))
+        var total = typeNum + amountNum
+        console.log(total)
+        if (size === "small"){
+            total = Math.ceil(total / 2)
+        } else if (size === "large"){
+            total = total * 2
+        } else if (size === "extra large"){
+            total = total * 3
+        }
+        return total
+    }
 }
 
 startOrdersBtn.addEventListener("click", function() {
