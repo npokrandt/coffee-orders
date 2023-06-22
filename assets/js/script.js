@@ -1,22 +1,34 @@
 
 var startOrdersBtn = document.getElementById("start-orders")
 
-var coffeeOrders = []
 var coffeeTypes = ["latte", "cappuccino", "mocha", "espresso", "americano"]
 var creamerAmounts = ["black", "little", "normal", "a bit extra", "koolaid"]
 var sizes = ["small", "regular", "large", "extra large"]
+var coffeeNum = 3
+var counter = 1
+
 // 2 stages:
 // build order card
 // check the users answer to the real one
 // main code
 
 //refactor at some point
+function writeLabel(text, value, parent){
+    var coffeeLabel = document.createElement("label")
+    coffeeLabel.class = "not-inline"
+    coffeeLabel.innerHTML =  text + ": " + value
+    console.log(coffeeLabel)
+    parent.appendChild(coffeeLabel)
+}
+
 function startGame(){
-    var id = "coffee" + coffeeOrders.length
+    var id = "coffee" + counter
+
     var coffeeType = coffeeTypes[Math.floor(Math.random() * 5)]
     var creamerAmount = creamerAmounts[Math.floor(Math.random() * 5)]
     var size = sizes[Math.floor(Math.random() * 4)]
-    //document.body.style.backgroundColor = "lightgreen"
+
+    //adding the card to the area
     var parent = document.getElementById("coffee-area")
     console.log(parent)
     var coffeeCard = document.createElement("form")
@@ -25,36 +37,20 @@ function startGame(){
     //coffeeCard.style.backgroundColor = "green"
     console.log(coffeeCard)
     parent.appendChild(coffeeCard)
-    //make sure to put it in the array!
-    coffeeOrders.push(id)
 
     parent = document.getElementById(id)
     console.log(parent)
 
     var coffeeHeader = document.createElement("h4")
-    coffeeHeader.innerHTML = "Order Card"
+    coffeeHeader.innerHTML = "Order Card #" + counter
     console.log(coffeeHeader)
     parent.appendChild(coffeeHeader)
 
-    var coffeeLabel1 = document.createElement("label")
-    coffeeLabel1.class = "not-inline"
-    coffeeLabel1.innerHTML = "Coffee Type: " + coffeeType
-    console.log(coffeeLabel1)
-    parent.appendChild(coffeeLabel1)
-    
-    var coffeeLabel2 = document.createElement("label")
-    coffeeLabel2.class = "not-inline"
-    coffeeLabel2.innerHTML = "Creamer Amount: " + creamerAmount
-    console.log(coffeeLabel2)
-    parent.appendChild(coffeeLabel2)
-    
-    var coffeeLabel3 = document.createElement("label")
-    coffeeLabel3.class = "not-inline"
-    coffeeLabel3.innerHTML = "Size: " + size
-    console.log(coffeeLabel3)
-    parent.appendChild(coffeeLabel3)
+    writeLabel("Coffee Type", coffeeType, parent)
+    writeLabel("Creamer Amount", creamerAmount, parent)
+    writeLabel("Size", size, parent)
 
-    var divId = "inputArea" + coffeeOrders.length
+    var divId = "inputArea" + counter
     var coffeeDiv = document.createElement("div")
     coffeeDiv.id = divId
     console.log(coffeeDiv)
@@ -67,10 +63,10 @@ function startGame(){
     parent.appendChild(coffeeButton)
 
     parent = document.getElementById(divId)
-    var coffeeLabel4 = document.createElement("label")
-    coffeeLabel4.innerHTML = "How Many Creamers?"
-    console.log(coffeeLabel4)
-    parent.appendChild(coffeeLabel4)
+    var coffeeLabel2 = document.createElement("label")
+    coffeeLabel2.innerHTML = "How Many Creamers?"
+    console.log(coffeeLabel2)
+    parent.appendChild(coffeeLabel2)
 
     var coffeeInput= document.createElement("input")
     coffeeInput.type = "text"
@@ -79,6 +75,12 @@ function startGame(){
 
     var answer = calculateCreamers(coffeeType, creamerAmount, size)
     console.log(answer)
+
+    counter++
+
+    if (counter > coffeeNum){
+        startOrdersBtn.disabled = true 
+    }
 }
 
 function calculateCreamers(type, amount, size) {
