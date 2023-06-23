@@ -1,5 +1,6 @@
 
 var startOrdersBtn = document.getElementById("start-orders")
+var coffeeArea = document.getElementById("coffee-area")
 
 var coffeeTypes = ["latte", "cappuccino", "mocha", "espresso", "americano"]
 var creamerAmounts = ["black", "little", "normal", "a bit extra", "koolaid"]
@@ -103,6 +104,20 @@ function calculateCreamers(type, amount, size) {
     }
 }
 
+function checkOrder(event){
+    console.log("click!")
+    //get the input of the user
+    //compare it to the right answer
+    //if correct, remove that coffee card
+    //else throw up complaint
+}
+
 startOrdersBtn.addEventListener("click", function() {
     startGame()
 })
+
+//will add way to single in on the buttons
+coffeeArea.addEventListener("click", checkOrder)
+
+
+
