@@ -1,4 +1,10 @@
 
+// What remains:
+// the rest of the main game
+// some css touch-up and responsiveness
+// random extra stuff
+// deployment!
+
 var startOrdersBtn = document.getElementById("start-orders")
 var coffeeArea = document.getElementById("coffee-area")
 
@@ -7,11 +13,6 @@ var creamerAmounts = ["black", "little", "normal", "a bit extra", "koolaid"]
 var sizes = ["small", "regular", "large", "extra large"]
 var coffeeNum = 3
 var counter = 1
-
-// 2 stages:
-// build order card
-// check the users answer to the real one
-// main code
 
 //refactor at some point
 function writeLabel(text, value, parent){
@@ -60,6 +61,7 @@ function startGame(){
     var coffeeButton = document.createElement("button")
     coffeeButton.type = "button"
     coffeeButton.textContent = "Submit Order"
+    coffeeButton.setAttribute("data-order-number", counter)
     console.log(coffeeButton)
     parent.appendChild(coffeeButton)
 
@@ -71,11 +73,13 @@ function startGame(){
 
     var coffeeInput= document.createElement("input")
     coffeeInput.type = "text"
+    coffeeInput.id = counter
     console.log(coffeeInput)
     parent.appendChild(coffeeInput)
 
     var answer = calculateCreamers(coffeeType, creamerAmount, size)
-    console.log(answer)
+    coffeeButton.setAttribute("data-answer", answer)
+    //console.log(coffeeButton.dataset)
 
     counter++
 
@@ -105,7 +109,21 @@ function calculateCreamers(type, amount, size) {
 }
 
 function checkOrder(event){
-    console.log("click!")
+
+    if (event.target.matches("button")){
+        var answer = event.target.getAttribute("data-answer")
+        var orderNumber = event.target.getAttribute("data-order-number")
+        var answerAttempt = document.getElementById(orderNumber).value
+        var card = document.getElementById("coffee" + orderNumber)
+        if (answerAttempt === answer){
+            console.log("correct answer!")
+            coffeeArea.removeChild(card)
+        } else {
+            console.log("wrong answer. Try again!")
+            //continue
+        }
+        
+    }  
     //get the input of the user
     //compare it to the right answer
     //if correct, remove that coffee card
