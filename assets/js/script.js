@@ -7,10 +7,7 @@
     //be able to play again after a run
     //don't care much about saving stats
 // some css touch-up and responsiveness
-    //design end game page
-    //maybe add correctness label
-    //style button some
-    //see what else, if any, to add to
+    //maybe responsiveness
 // random extra stuff
     //??
 // deployment!
@@ -20,6 +17,7 @@ var startOrdersBtn = document.getElementById("start-orders")
 var playAgainBtn = document.getElementById("play-again")
 var coffeeArea = document.getElementById("coffee-area")
 var gameEndPage = document.getElementById("game-end-page")
+gameEndPage.style.display = "none"
 
 var coffeeTypes = ["latte", "cappuccino", "mocha", "espresso", "americano"]
 var creamerAmounts = ["black", "little", "normal", "a bit extra", "koolaid"]
@@ -149,15 +147,11 @@ function checkOrder(event){
         }
         
     }  
-    //get the input of the user
-    //compare it to the right answer
-    //if correct, remove that coffee card
-    //else throw up complaint
 }
 
 function endGame(){
     console.log("Game over!")
-    gameEndPage.style.display = "block"
+    gameEndPage.style.display = "flex"
 }
 
 function startGameOver(){
