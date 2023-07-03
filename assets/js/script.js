@@ -17,7 +17,9 @@
     //gotta wait until I have an IC
 
 var startOrdersBtn = document.getElementById("start-orders")
+var playAgainBtn = document.getElementById("play-again")
 var coffeeArea = document.getElementById("coffee-area")
+var gameEndPage = document.getElementById("game-end-page")
 
 var coffeeTypes = ["latte", "cappuccino", "mocha", "espresso", "americano"]
 var creamerAmounts = ["black", "little", "normal", "a bit extra", "koolaid"]
@@ -155,11 +157,18 @@ function checkOrder(event){
 
 function endGame(){
     console.log("Game over!")
+    gameEndPage.style.display = "block"
 }
 
-startOrdersBtn.addEventListener("click", function() {
-    startGame()
-})
+function startGameOver(){
+    gameEndPage.style.display = "none"
+    counter = 1
+    clickCounter = 0
+    coffeeInterval = setInterval(createCard, 1000)
+}
+
+startOrdersBtn.addEventListener("click", startGame)
+playAgainBtn.addEventListener("click", startGameOver)
 
 //will add way to single in on the buttons
 coffeeArea.addEventListener("click", checkOrder)
