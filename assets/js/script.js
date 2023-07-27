@@ -13,6 +13,21 @@
 // deployment!
     //gotta wait until I have an IC
 
+//if the storage isn't set, this runs    
+function setStorage(){
+    localStorage.setItem("a bit extra", JSON.stringify(2))
+    localStorage.setItem("americano",   JSON.stringify(0))
+    localStorage.setItem("cappuccino",  JSON.stringify(1))
+    localStorage.setItem("espresso",    JSON.stringify(4))
+    localStorage.setItem("koolaid",     JSON.stringify(5))
+    localStorage.setItem("latte",       JSON.stringify(2))
+    localStorage.setItem("little",      JSON.stringify(0))
+    localStorage.setItem("mocha",       JSON.stringify(2))
+    localStorage.setItem("normal",      JSON.stringify(1))
+}
+
+setStorage()
+
 var startOrdersBtn = document.getElementById("start-orders")
 var playAgainBtn = document.getElementById("play-again")
 var coffeeArea = document.getElementById("coffee-area")
